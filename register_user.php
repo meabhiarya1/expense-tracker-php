@@ -1,14 +1,25 @@
 <?php
 include("./includes/header.php");
+include("./includes/functions.php");
 
 if(isset($_REQUEST['register'])){
+
+    include("./includes/db_conn.php");
+
     $user_name = $_REQUEST['user_name'];
     $user_pass = $_REQUEST['user_pass'];
 
-    echo $user_name;
-    echo $user_pass;
-}
+    $sql = "INSERT INTO reg_users (user_name, user_pass)
+    VALUES ('$user_name', '$user_pass')";
 
+    if (mysqli_query($conn, $sql)) {
+        my_alert("success", "New record created successfully !!!");
+    } else {
+        my_alert("danger", "Somthing went wrong !!!");
+    }
+
+    mysqli_close($conn);
+}
 ?>
 
 <div class="container">
