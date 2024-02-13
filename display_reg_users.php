@@ -6,6 +6,17 @@ include("./includes/db_conn.php");
 ?>
 
 <div class="container">
+    <div class="row">
+        <div class="col-12 py-5">
+            <h1 class="text-center">
+                Registered Users
+            </h1>
+        </div>
+
+        <div class="col-12 mb-3">
+            <a href="./register_user.php" class="btn btn-primary">Add User</a>
+        </div>
+    </div>
     <table class="table table-bordered table-striped table-hover">
     <thead class="table-dark">
         <tr>
@@ -24,11 +35,17 @@ include("./includes/db_conn.php");
                     <tr>
                         <th scope="row"><?php echo $row['reg_id']; ?></th>
                             <td><?php echo $row['user_name']; ?></td>
-                        </tr>
+                    </tr>
                 <?php
                 }
             } else {
-                echo "No Record Found !!";
+                ?>
+                    <tr>
+                        <td colspan="2">
+                            <h3 class="text-danger text-center">No Record Found !!</h3>
+                        </td>
+                    </tr>
+                <?php
             }
             
             ?>
