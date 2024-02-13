@@ -1,12 +1,15 @@
 <?php
 include("./includes/header.php");
 
-$user_name = $_REQUEST['user_name'];
-$user_pass = $_REQUEST['user_pass'];
+if(isset($_REQUEST['register'])){
+    $user_name = $_REQUEST['user_name'];
+    $user_pass = $_REQUEST['user_pass'];
+
+    echo $user_name;
+    echo $user_pass;
+}
+
 ?>
-
-
-
 
 <div class="container">
     <div class="card my-card">
