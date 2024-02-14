@@ -22,11 +22,12 @@ include("./includes/db_conn.php");
         <tr>
         <th scope="col">ID</th>
         <th scope="col">User Name</th>
+        <th scope="col">Picture</th>
         </tr>
     </thead>
         <tbody>
             <?php
-            $fetch_data = "SELECT reg_id,user_name FROM reg_users";
+            $fetch_data = "SELECT reg_id,user_name,user_pic FROM reg_users";
             $run_fetch_data = mysqli_query($conn, $fetch_data);
 
             if(mysqli_num_rows($run_fetch_data) > 0) {
@@ -35,6 +36,22 @@ include("./includes/db_conn.php");
                     <tr>
                         <th scope="row"><?php echo $row['reg_id']; ?></th>
                             <td><?php echo $row['user_name']; ?></td>
+                            <td>
+                                <a href="upload_img.php?user_id=<?php echo $row['reg_id'] ?>">
+
+                                <?php 
+                                    if($row['user_pic'] == NULL){
+                                        ?>
+                                         <img width="40px" class="rounded" src="./images/user_image/dummy_pic.png" alt="dummy image">
+                                        <?php
+                                    } else {
+                                        ?>
+                                         <img width="40px" class="rounded" src="./images/user_image/<?php echo $row['user_pic']; ?>" alt="dummy image">
+                                        <?php
+                                    }
+                                ?>
+                            </a>
+                            </td>
                     </tr>
                 <?php
                 }
