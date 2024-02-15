@@ -30,7 +30,7 @@ include("./includes/db_conn.php");
             <?php
             $fetch_data = "SELECT reg_id,user_name,user_pic FROM reg_users";
             $run_fetch_data = mysqli_query($conn, $fetch_data);
-
+            $counter = 1;
             if(mysqli_num_rows($run_fetch_data) > 0) {
                 while($row = mysqli_fetch_assoc($run_fetch_data)){
                     ?>
@@ -38,7 +38,7 @@ include("./includes/db_conn.php");
                         <th scope="row"><?php echo $row['reg_id']; ?></th>
                             <td><?php echo $row['user_name']; ?></td>
                             <td>
-                                <a href="upload_img.php?user_id=<?php echo $row['reg_id'] ?>">
+                                <a href="upload_img.php?user_id=<?php echo $counter ?>">
 
                                 <?php 
                                     if($row['user_pic'] == NULL){
@@ -62,6 +62,7 @@ include("./includes/db_conn.php");
                             </td>
                     </tr>
                 <?php
+                $counter++;
                 }
             } else {
                 ?>
@@ -72,7 +73,7 @@ include("./includes/db_conn.php");
                     </tr>
                 <?php
             }
-            
+            mysqli_close($conn);
             ?>
         </tbody>
     </table>
