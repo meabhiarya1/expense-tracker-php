@@ -17,12 +17,13 @@ include("./includes/db_conn.php");
             <a href="./register_user.php" class="btn btn-primary">Add User</a>
         </div>
     </div>
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-striped table-hover text-center">
     <thead class="table-dark">
         <tr>
         <th scope="col">ID</th>
-        <th scope="col">User Name</th>
+        <th scope="col">Username</th>
         <th scope="col">Picture</th>
+        <th scope="col">Operations</th>
         </tr>
     </thead>
         <tbody>
@@ -51,6 +52,13 @@ include("./includes/db_conn.php");
                                     }
                                 ?>
                             </a>
+                            </td>
+
+                            <td>
+
+                                <a class="me-3 btn btn-primary" href="./update_user.php?update_id=<?php echo $row['reg_id'] ?>">Update Password</a>
+                            
+                                <a class="btn btn-primary" href="./delete_user.php?delete_id=<?php echo $row['reg_id'] ?>">Delete</a>
                             </td>
                     </tr>
                 <?php
